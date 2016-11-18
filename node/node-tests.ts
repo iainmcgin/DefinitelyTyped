@@ -723,6 +723,8 @@ namespace tls_tests {
         _server = _server.prependOnceListener("secureConnection", (tlsSocket) => {
             let _tlsSocket: tls.TLSSocket = tlsSocket;
         })
+        _server = _server.close(() => {});
+        _server = _server.close();
     }
 
     {
@@ -1303,7 +1305,7 @@ namespace child_process_tests {
         childProcess.exec("echo test");
         childProcess.spawnSync("echo test");
     }
-    
+
     {
         let _cp: childProcess.ChildProcess;
         let _boolean: boolean;
